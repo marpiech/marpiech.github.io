@@ -1,7 +1,10 @@
 ## Contents
 ### Gists
+#### Admin
 [Add user](#adduser)  
-[Set .htpasswd](#htpasswd)  
+[Set .htpasswd](#htpasswd)
+#### AWS
+[Delete all log streams for log group](#delete-all-log-streams-for-log-group)
 
 
 ## Gists
@@ -15,10 +18,13 @@ curl https://gist.githubusercontent.com/marpiech/1c601a1595324e10393a0fc56635ef5
 https://gist.githubusercontent.com/marpiech/1c601a1595324e10393a0fc56635ef5d/raw/6c06ed9a3af5d0b5565192f98a1db96bebdf3917/adduser.sh | bash /dev/stdin [username] [github username]
 ```
 
-
-
 <a name="htpasswd"></a>
 #### Set .htpasswd
 ```
 sudo htpasswd -c /etc/apache2/.htpasswd marpiech
+```
+
+#### Delete all log streams for log group
+```
+aws logs describe-log-streams --log-group-name "/aws/batch/job" | jq ".logStreams[].logStreamName" | xargs -i bash -c "echo {}; aws logs delete-log-stream --log-group-name /aws/batch/job --log-stream-name {}"
 ```
