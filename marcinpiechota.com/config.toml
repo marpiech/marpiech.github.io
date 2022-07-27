@@ -1,4 +1,5 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://marcinpiechota.com/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
-theme = "hugo-book"
+title = 'Marcin Piechota - Genomics Done'
+theme = 'hugo-book'
+publishDir = '../docs/'
